@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>AppName</key>
+    <string>Install Dev Tools</string>
+    <key>AppVersion</key>
+    <string>1.0</string>
+    <key>Author</key>
+    <string>Your Name</string>
+    <key>IconPath</key>
+    <string>/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/Executable.icns</string>
+    <key>Interpreter</key>
+    <string>/bin/bash</string>
+    <key>ScriptPath</key>
+    <string>install_dev_tools.sh</string>
+    <key>PromptForAdminPassword</key>
+    <true/>
+    <key>OutputMode</key>
+    <string>None</string>
+</dict>
+</plist>
