@@ -20,15 +20,13 @@ jobs:
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
         
-    - name: Download Platypus
+    - name: Install Platypus
       run: |
-        curl -LO https://github.com/sveinbjornt/Platypus/releases/download/v5.4/Platypus-5.4.zip
-        unzip -o Platypus-5.4.zip -d /Applications/
-        chmod +x /Applications/Platypus.app/Contents/MacOS/Platypus
+        brew install --cask platypus
 
     - name: Build macOS app
       run: |
-        /Applications/Platypus.app/Contents/MacOS/Platypus -y -P platypus_config.plist -a install_dev_tools.sh -o Build/InstallDevTools.app
+        platypus -y -P platypus_config.plist -a install_dev_tools.sh -o Build/InstallDevTools.app
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v2
