@@ -22,7 +22,7 @@ jobs:
 
     - name: Install Platypus
       run: |
-        brew install platypus
+        brew install --cask platypus
 
     - name: Build macOS app
       run: |
