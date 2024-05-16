@@ -19,17 +19,16 @@ jobs:
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    - name: Install Platypus
+        
+    - name: Download Platypus
       run: |
-        brew install --cask platypus
+        curl -LO https://github.com/sveinbjornt/Platypus/releases/download/v5.4/Platypus-5.4.zip
+        unzip Platypus-5.4.zip -d Platypus
+        sudo mv Platypus/Platypus.app /Applications/
 
-    - name: Ensure Platypus is in PATH
-      run: echo "/opt/homebrew/Caskroom/platypus/latest/Platypus.app/Contents/MacOS" >> $GITHUB_PATH
-      
     - name: Build macOS app
       run: |
-        platypus -y -P platypus_config.plist -a install_dev_tools.sh -o Build/InstallDevTools.app
+        /Applications/Platypus.app/Contents/MacOS/Platypus -y -P platypus_config.plist -a install_dev_tools.sh -o Build/InstallDevTools.app
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v2
