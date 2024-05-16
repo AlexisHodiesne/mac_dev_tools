@@ -16,7 +16,9 @@ jobs:
     - name: Install Homebrew
       run: |
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $GITHUB_ENV
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
 
     - name: Install Platypus
       run: |
