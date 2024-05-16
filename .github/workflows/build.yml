@@ -23,8 +23,8 @@ jobs:
     - name: Download Platypus
       run: |
         curl -LO https://github.com/sveinbjornt/Platypus/releases/download/v5.4/Platypus-5.4.zip
-        unzip Platypus-5.4.zip -d Platypus
-        sudo mv Platypus/Platypus.app /Applications/
+        unzip -o Platypus-5.4.zip -d /Applications/
+        chmod +x /Applications/Platypus.app/Contents/MacOS/Platypus
 
     - name: Build macOS app
       run: |
