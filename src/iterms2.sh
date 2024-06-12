@@ -70,18 +70,23 @@ install_powerlevel10k() {
 
 # Fonction pour configurer Zsh
 configure_zsh() {
-  echo "Configuration de Zsh..."
+  echo "Configuration de Zsh avec Powerlevel10k..."
+
+  # Vérifie si le thème Powerlevel10k est configuré
   if ! grep -q 'ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc; then
     sed -i '' 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+    echo "Thème Powerlevel10k configuré."
   fi
-  if [ ! -f ~/.p10k.zsh ]; then
-    echo "Configuration par défaut de Powerlevel10k..."
-    curl -o ~/.p10k.zsh https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/config/p10k-classic.zsh
-  fi
-  if ! grep -q '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' ~/.zshrc; then
-    echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
-  fi
+
+  # Configure Powerlevel10k
+  echo "Configuration de Powerlevel10k..."
+  p10k configure
+
+  # Charge la configuration Zsh
+  echo "Activation de la configuration..."
   source ~/.zshrc
+
+  echo "Configuration terminée."
 }
 
 # Fonction pour configurer iTerm2
